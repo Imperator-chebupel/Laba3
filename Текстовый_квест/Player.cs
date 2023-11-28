@@ -15,5 +15,10 @@ namespace Текстовый_квест
         float time_speed = 1.0f;
         List <Objects> inventoty = new List<Objects>();
         string[][] dialogs = new string[][] { };
+
+        public void To_Do()
+        {
+            
+        }
     }
 }
