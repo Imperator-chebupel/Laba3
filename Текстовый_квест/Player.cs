@@ -12,14 +12,8 @@ namespace Текстовый_квест
         int time_h = 7;
         public
         int time_m = 0;
-        int time_speed = 1;
+        float time_speed = 1.0f;
         List <Objects> inventoty = new List<Objects>();
         string[][] dialogs = new string[][] { };
-        var Action = new Dictionary <string, Delegate>();
-
-        public void To_Do()
-        {
-            
-        }
     }
 }
