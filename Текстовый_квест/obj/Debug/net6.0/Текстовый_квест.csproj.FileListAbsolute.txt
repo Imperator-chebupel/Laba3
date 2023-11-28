@@ -13,3 +13,18 @@ C:\Users\azza1\OneDrive\Рабочий стол\Информатика\c\Тек�
 C:\Users\azza1\OneDrive\Рабочий стол\Информатика\c\Текстовый_квест\obj\Debug\net6.0\Текстовый_квест.pdb
 C:\Users\azza1\OneDrive\Рабочий стол\Информатика\c\Текстовый_квест\obj\Debug\net6.0\Текстовый_квест.genruntimeconfig.cache
 C:\Users\azza1\OneDrive\Рабочий стол\Информатика\c\Текстовый_квест\obj\Debug\net6.0\ref\Текстовый_квест.dll
+C:\Users\azza1\Source\Repos\Laba3\Текстовый_квест\bin\Debug\net6.0\Текстовый_квест.exe
+C:\Users\azza1\Source\Repos\Laba3\Текстовый_квест\bin\Debug\net6.0\Текстовый_квест.deps.json
+C:\Users\azza1\Source\Repos\Laba3\Текстовый_квест\bin\Debug\net6.0\Текстовый_квест.runtimeconfig.json
+C:\Users\azza1\Source\Repos\Laba3\Текстовый_квест\bin\Debug\net6.0\Текстовый_квест.dll
+C:\Users\azza1\Source\Repos\Laba3\Текстовый_квест\bin\Debug\net6.0\Текстовый_квест.pdb
+C:\Users\azza1\Source\Repos\Laba3\Текстовый_квест\obj\Debug\net6.0\Текстовый_квест.csproj.AssemblyReference.cache
+C:\Users\azza1\Source\Repos\Laba3\Текстовый_квест\obj\Debug\net6.0\Текстовый_квест.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\azza1\Source\Repos\Laba3\Текстовый_квест\obj\Debug\net6.0\Текстовый_квест.AssemblyInfoInputs.cache
+C:\Users\azza1\Source\Repos\Laba3\Текстовый_квест\obj\Debug\net6.0\Текстовый_квест.AssemblyInfo.cs
+C:\Users\azza1\Source\Repos\Laba3\Текстовый_квест\obj\Debug\net6.0\Текстовый_квест.csproj.CoreCompileInputs.cache
+C:\Users\azza1\Source\Repos\Laba3\Текстовый_квест\obj\Debug\net6.0\Текстовый_квест.dll
+C:\Users\azza1\Source\Repos\Laba3\Текстовый_квест\obj\Debug\net6.0\refint\Текстовый_квест.dll
+C:\Users\azza1\Source\Repos\Laba3\Текстовый_квест\obj\Debug\net6.0\Текстовый_квест.pdb
+C:\Users\azza1\Source\Repos\Laba3\Текстовый_квест\obj\Debug\net6.0\Текстовый_квест.genruntimeconfig.cache
+C:\Users\azza1\Source\Repos\Laba3\Текстовый_квест\obj\Debug\net6.0\ref\Текстовый_квест.dll

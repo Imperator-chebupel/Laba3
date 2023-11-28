@@ -8,12 +8,28 @@ namespace Текстовый_квест
 {
     internal class Player
     {
-        public
-        int time_h = 7;
-        public
-        int time_m = 0;
-        float time_speed = 1.0f;
+        int Time_left = 90;
+
+        public int Time_left_
+        {
+            get { return Time_left; }
+            set { Time_left = value; }
+        }
+
+
+
         List <Objects> inventoty = new List<Objects>();
         string[][] dialogs = new string[][] { };
+
+        public void Add_obj(Objects O)
+        {
+            inventoty.Add(O);
+        }
+
+
+        public void To_Do()
+        {
+            
+        }
     }
 }

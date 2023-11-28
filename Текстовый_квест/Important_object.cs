@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Текстовый_квест
 {
-    internal class World
+    internal class Important_object : Objects
     {
-        bool Street;
-        bool Obzh;
-        bool Corp;
-
+        bool Importance = true;
     }
 }
