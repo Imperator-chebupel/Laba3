@@ -8,6 +8,9 @@ namespace Текстовый_квест
 {
     internal class World
     {
+        bool Street;
+        bool Obzh;
+        bool Corp;
 
     }
 }
