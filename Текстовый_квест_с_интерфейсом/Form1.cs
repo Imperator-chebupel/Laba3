@@ -13,6 +13,7 @@ namespace Текстовый_квест_с_интерфейсом
     public partial class Form1 : Form
     {
         Player player = new Player();
+        Item_usefull amogus = new Item_usefull {Name_ = "asdfg", Discription_ = "Мощная хрень" };
         public Form1()
         {
             InitializeComponent();
@@ -111,6 +112,14 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_8;//фото
         }
-        
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            player.Pick_up(amogus);
+            player.Pick_up(amogus);
+            Form2 Inventory = new Form2(player);
+            Inventory.Show();
+
+        }
     }
 }
