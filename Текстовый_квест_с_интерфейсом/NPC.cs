@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Текстовый_квест_с_интерфейсом
 {
-    public abstract class Item
+    public class NPC
     {
-        string Name;
-        string Discription;
         int X;
         int Y;
+        string Name;
+        Item item;
 
         public int X_
         {
@@ -32,20 +31,10 @@ namespace Текстовый_квест_с_интерфейсом
             set { Name = value; }
         }
 
-        public string Discription_ 
+        public Item item_
         {
-            get { return Discription; } 
-            set { Discription = value; } 
+            get { return item; }
+            set { item = value;}
         }
-
-        /*
-        public  Item(string name, string discription)
-        {
-            Name = name;
-            Discription = discription;
-        }*/
-
-        public abstract string Write();
-        
     }
 }

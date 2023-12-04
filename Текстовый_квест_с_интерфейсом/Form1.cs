@@ -12,15 +12,25 @@ namespace Текстовый_квест_с_интерфейсом
 {
     public partial class Form1 : Form
     {
-        Player player = new Player();
-        Item_usefull amogus = new Item_usefull {Name_ = "asdfg", Discription_ = "Мощная хрень" };
+        Player player = new Player {X_ =0, Y_ = 0 };
+        Stuff Locations = new Stuff();
         public Form1()
         {
             InitializeComponent();
-            this.player.X_ = 0;
-            this.player.Y_ = 0;
+
+
+            Item_usefull Pen = new Item_usefull { X_ = 0, Y_ = 0, Name_ = "Ручка", Discription_ = "Самый важный инструмент после собственной головы" };
+            Item_useless Pechenka = new Item_useless { X_ = 1, Y_ = 0, Name_ = "Печенье", Discription_ = "Выглядит вкусно" };
+            Locations.All_items(Pen);
+            Locations.All_items(Pechenka);
+
+
+            //Item_usefull Zapisi = new Item_usefull { Name_ = "Записи", Discription_ = "То немногое, что Вадим успел записать за все лекции, на которых он был (целых 2)" };
+            //NPC Vadim = new NPC {X_ =1, Y_ = 0, Name_ = "Вадим", item_ = Zapisi };
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_0;
+            richTextBox1.Text = "Я проснулся в 7 часов утра в предвкушении замечательного дня...\n\rОднако я совсем забыл, " +
+                "что сегодня экзамен! Так я ещё и не готов!\n\rМне нужно найти: канцелярию, студенческий билет и как можно больше конспектов";
         }
 
         private void button1_Click_1(object sender, EventArgs e) //Комната
@@ -41,6 +51,7 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Clear();
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_1;//фото
+            button10.Text = "Pogovorit s Vadimom";
         }
 
         private void button2_Click(object sender, EventArgs e) // Первый этаж общежития
@@ -101,6 +112,7 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Clear();
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_7;//фото
+            //button10.Text += "tetei";
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -111,15 +123,22 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Clear();
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_8;//фото
+            //button10.Text += "prepodovatelem";
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void button9_Click(object sender, EventArgs e)//показ инвентаря
         {
-            player.Pick_up(amogus);
-            player.Pick_up(amogus);
             Form2 Inventory = new Form2(player);
             Inventory.Show();
 
+        }
+
+        private void button11_Click(object sender, EventArgs e) // осмотр локации
+        {
+            if (Locations.Search_item(player.X_, player.Y_, player))
+                richTextBox1.Text += "\n\rЯ что-то нашёл!";
+            else
+                richTextBox1.Text += "\n\rТут ничего нет";
         }
     }
 }
