@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Текстовый_квест_с_интерфейсом
 {
-    internal class Player
+    public class Player
     {
         int Time = 90;
         int X; 
         int Y;
+        List<Item> Inventory = new List<Item>();
 
         public int Time_
         {
@@ -44,6 +45,23 @@ namespace Текстовый_квест_с_интерфейсом
             Time_ = Time - Math.Abs(x - X) * 3 - Math.Abs(y - Y) * 5;
             X = x;
             Y = y;
+        }
+
+        public string Write_inventory()
+        {
+            string result = "";
+            int i = 1;
+            foreach (Item I in Inventory)
+            {
+                result = result + i + ") " + I.Write();
+                i++;
+            }
+            return result;
+        }
+
+        public void Pick_up(Item item)
+        {
+            Inventory.Add(item);
         }
     }
 }
