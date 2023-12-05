@@ -10,7 +10,7 @@ namespace Текстовый_квест_с_интерфейсом
     {
         public override string Write()
         {
-            return (Name_ + "\r\n " + Discription_ + "\r\n" + "Необходимый для зачёта предмет");
+            return (Name_ + "\r\n" + Discription_ + "\r\n" + "Необходимый для зачёта предмет" + "\r\n");
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Текстовый_квест_с_интерфейсом
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            //Player player = new Player();
+            
         }
 
 

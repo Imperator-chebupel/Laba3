@@ -36,5 +36,8 @@ namespace Текстовый_квест_с_интерфейсом
             get { return item; }
             set { item = value;}
         }
+
+
+
     }
 }

@@ -21,12 +21,14 @@ namespace Текстовый_квест_с_интерфейсом
 
             Item_usefull Pen = new Item_usefull { X_ = 0, Y_ = 0, Name_ = "Ручка", Discription_ = "Самый важный инструмент после собственной головы" };
             Item_useless Pechenka = new Item_useless { X_ = 1, Y_ = 0, Name_ = "Печенье", Discription_ = "Выглядит вкусно" };
+            Item_usefull Zapisi = new Item_usefull { X_ =9, Y_=0,Name_ = "Записи", Discription_ = "То немногое, что Вадим успел записать за все лекции, на которых он был (целых 2)" };
+            NPC Vadim = new NPC {X_ =1, Y_ = 0, Name_ = "Вадим", item_ = Zapisi };
+
+
             Locations.All_items(Pen);
             Locations.All_items(Pechenka);
+            Locations.All_NPCs(Vadim);
 
-
-            //Item_usefull Zapisi = new Item_usefull { Name_ = "Записи", Discription_ = "То немногое, что Вадим успел записать за все лекции, на которых он был (целых 2)" };
-            //NPC Vadim = new NPC {X_ =1, Y_ = 0, Name_ = "Вадим", item_ = Zapisi };
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_0;
             richTextBox1.Text = "Я проснулся в 7 часов утра в предвкушении замечательного дня...\n\rОднако я совсем забыл, " +
@@ -51,7 +53,7 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Clear();
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_1;//фото
-            button10.Text = "Pogovorit s Vadimom";
+            //button10.Text = "Pogovorit s Vadimom";
         }
 
         private void button2_Click(object sender, EventArgs e) // Первый этаж общежития
@@ -139,6 +141,14 @@ namespace Текстовый_квест_с_интерфейсом
                 richTextBox1.Text += "\n\rЯ что-то нашёл!";
             else
                 richTextBox1.Text += "\n\rТут ничего нет";
+        }
+
+        private void button10_Click(object sender, EventArgs e) // разговор с нпс
+        {
+            if (Locations.Ask_for_item(player.X_, player.Y_, player))
+                richTextBox1.Text += "\n\rМне что-то передали!";
+            else
+                richTextBox1.Text += "\n\rФиг мне...";
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Текстовый_квест_с_интерфейсом
     {
         public override string Write()
         {
-            return (Name_ + "\r\n" + Discription_ + "\r\n" + "Никто не знает, понадобится ли эта штука на экзамене...");
+            return (Name_ + "\r\n" + Discription_ + "\r\n" + "Никто не знает, понадобится ли эта штука на экзамене..." + "\r\n");
         }
     }
 }
