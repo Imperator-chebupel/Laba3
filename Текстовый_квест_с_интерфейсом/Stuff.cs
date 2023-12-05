@@ -47,22 +47,35 @@ namespace Текстовый_квест_с_интерфейсом
             }
             return false;
         }
-
-        public bool Ask_for_item(int x_p, int y_p, Player player)
+        
+        public int Ask_for_item(int x_p, int y_p, Player player, int code)
         {
-            bool A; //проверка на существование предмета
             foreach (NPC npc in NPCs)
             {
-                if ((npc.X_ == x_p) && (npc.Y_ == y_p))
+                if ((npc.X_ == x_p) && (npc.Y_ == y_p) && (code == npc.Answer_))
                 {
                     if (npc.item_ != null)
                     {
                         player.Pick_up(npc.item_);
                         Take_item_from(npc.item_, npc);
-                        return true;
+                        return 2;
                     }
                     else
-                        return false;
+                        return 1;
+                }
+                else if ((npc.X_ == x_p) && (npc.Y_ == y_p) && (code != npc.Answer_))
+                    return 4;
+            }
+            return 0;
+        }
+
+            public bool NPC_near(int x_p, int y_p)
+        {
+            foreach (NPC npc in NPCs)
+            {
+                if ((npc.X_ == x_p) && (npc.Y_ == y_p))
+                {
+                        return true;
                 }
             }
             return false;
