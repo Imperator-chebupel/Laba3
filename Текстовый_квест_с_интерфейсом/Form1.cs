@@ -21,20 +21,42 @@ namespace Текстовый_квест_с_интерфейсом
             button13.Visible = false;
             button14.Visible = false;
             button15.Visible = false;
+            button16.Visible = false;
             Item_usefull Pen = new Item_usefull { X_ = 0, Y_ = 0, Name_ = "Ручка", Discription_ = "Самый важный инструмент после собственной головы" };
             Item_useless Pechenka = new Item_useless { X_ = 1, Y_ = 0, Name_ = "Печенье", Discription_ = "Выглядит вкусно" };
-            Item_usefull Zapisi = new Item_usefull { X_ =9, Y_=0,Name_ = "Записи", Discription_ = "То немногое, что Вадим успел записать за все лекции, на которых он был (целых 2)" };
+            Item_usefull Zapisi = new Item_usefull { X_ =9, Y_=0,Name_ = "Записи", Discription_ = "То немногое, что Вадим успел записать за 2 лекции, на которых он был" };
             NPC Vadim = new NPC {X_ =1, Y_ = 0, Name_ = "Вадим", item_ = Zapisi, Answer_ = 1 };
+            Item_useless Nosok = new Item_useless { X_ = 2, Y_ = 0, Name_ = "Носок", Discription_ = "Левый... Осталось найти правый" };
+            Item_usefull Bilet = new Item_usefull { Name_ = "Студенческий билет", Discription_ = "Удостоверение студенческой личности" };
+            NPC Zina = new NPC { X_ = 2, Y_ = 0, Name_ = "Зинаида", Answer_ = 4, item_ =Bilet };
+            Item_usefull Ksiva = new Item_usefull {Name_ = "Ксива", Discription_ = "Какая-то важная бумажка. Не знаю, как она оказалась у кота" };
+            NPC Cat = new NPC {X_=1, Y_=1, Name_ = "Кот", Answer_ = 3, item_ = Ksiva };
+            Item_useless Konfeta = new Item_useless { X_ = 0, Y_ = 1, Name_ = "Конфета", Discription_ = "Обычная конфета с пола" };
+            Item_useless Pelmeni = new Item_useless {Name_ = "Пачка пельменей", Discription_ = "Продукт с непредсказуемой начинкой, лучше скушаю вечером" };
+            NPC Kassir = new NPC {X_=0, Y_ = 1, Name_ = "Ашот", Answer_ = 2, item_ = Pelmeni };
+            Item_usefull Book = new Item_usefull { Name_ = "Учебник", Discription_ = "Что-то на умном и для умных - ещё не скоро смогу прочитать",X_ = 2, Y_ = 1 };
+            Item_usefull Spisok = new Item_usefull {Name_ = "С.Ж.В.", Discription_ = "Список жёстких вопросов с экзамена, на них чаще всего валят студентов" };
+            NPC Ohr = new NPC { X_ = 0, Y_ = 2, Name_ = "Охранник", Answer_ = 1, item_ = Spisok };
+            Item_usefull Str = new Item_usefull {X_ =1, Y_=2, Name_ = "Стиралка", Discription_ = "Нлавное - не продырявить листок во время стирания своих каракулей" };
 
 
             Locations.All_items(Pen);
             Locations.All_items(Pechenka);
             Locations.All_NPCs(Vadim);
+            Locations.All_items(Nosok);
+            Locations.All_NPCs(Zina);
+            Locations.All_NPCs(Cat);
+            Locations.All_items(Konfeta);
+            Locations.All_NPCs(Kassir);
+            Locations.All_items(Book);
+            Locations.All_NPCs(Ohr);
+            Locations.All_items(Str);
 
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_0;
             richTextBox1.Text = "Я проснулся в 7 часов утра в предвкушении замечательного дня...\n\rОднако я совсем забыл, " +
                 "что сегодня экзамен! Так я ещё и не готов!\n\rМне нужно найти: канцелярию, студенческий билет и как можно больше конспектов";
+
         }
 
         private void button1_Click_1(object sender, EventArgs e) //Комната
@@ -157,6 +179,8 @@ namespace Текстовый_квест_с_интерфейсом
             button13.Visible = false;
             button14.Visible = false;
             button15.Visible = false;
+            button10.Visible = false;
+            button16.Visible = true;
         }
 
         private void button9_Click(object sender, EventArgs e)//показ инвентаря
@@ -241,6 +265,11 @@ namespace Текстовый_квест_с_интерфейсом
                 richTextBox1.Text += "\n\rМы уже всё обсудили";
             else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 4)
                 richTextBox1.Text += "\n\rМне следует подобрать другие слова";
+        }
+
+        private void button16_Click(object sender, EventArgs e) //тут будет сдача экзамена
+        {
+            int Items = 0;
         }
     }
 }
