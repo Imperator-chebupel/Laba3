@@ -58,7 +58,7 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_0;
             richTextBox1.Text = "Я проснулся в 7 часов утра в предвкушении замечательного дня...\n\rОднако я совсем забыл, " +
-                "что сегодня экзамен! Так я ещё и не готов!\n\rМне нужно найти: канцелярию, студенческий билет и как можно больше конспектов";
+                "что сегодня экзамен! Так я ещё и не готов!\n\rМне нужно найти: канцелярию, студенческий билет и как можно больше конспектов\n\rСейчас я в своей комнате";
         }
 
         private void button1_Click_1(object sender, EventArgs e) //Комната
@@ -69,6 +69,8 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Clear();
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_0; //фото
+            richTextBox1.Text += "\n\rМоя комната";
+            richTextBox1_TextChanged();
         }
 
         private void button1_Click(object sender, EventArgs e) // Зал
@@ -83,6 +85,8 @@ namespace Текстовый_квест_с_интерфейсом
             button13.Visible = false;
             button14.Visible = false;
             button15.Visible = false;
+            richTextBox1.Text += "\n\rЗал общежития";
+            richTextBox1_TextChanged();
         }
 
         private void button2_Click(object sender, EventArgs e) // Первый этаж общежития
@@ -97,6 +101,8 @@ namespace Текстовый_квест_с_интерфейсом
             button13.Visible = false;
             button14.Visible = false;
             button15.Visible = false;
+            richTextBox1.Text += "\n\rПервый этаж общежития";
+            richTextBox1_TextChanged();
         }
 
         private void button3_Click(object sender, EventArgs e) // магазин
@@ -111,6 +117,8 @@ namespace Текстовый_квест_с_интерфейсом
             button13.Visible = false;
             button14.Visible = false;
             button15.Visible = false;
+            richTextBox1.Text += "\n\rМагазин 'Троечка'";
+            richTextBox1_TextChanged();
         }
 
         private void button4_Click(object sender, EventArgs e) // гаражи
@@ -125,6 +133,8 @@ namespace Текстовый_квест_с_интерфейсом
             button13.Visible = false;
             button14.Visible = false;
             button15.Visible = false;
+            richTextBox1.Text += "\n\rСтарые гаражи";
+            richTextBox1_TextChanged();
         }
 
         private void button5_Click(object sender, EventArgs e) // скамейка 
@@ -139,6 +149,8 @@ namespace Текстовый_квест_с_интерфейсом
             button13.Visible = false;
             button14.Visible = false;
             button15.Visible = false;
+            richTextBox1.Text += "\n\rСкамейка. Просто скамейка";
+            richTextBox1_TextChanged();
         }
 
         private void button6_Click(object sender, EventArgs e) // холл корпуса
@@ -153,6 +165,8 @@ namespace Текстовый_квест_с_интерфейсом
             button13.Visible = false;
             button14.Visible = false;
             button15.Visible = false;
+            richTextBox1.Text += "\n\rХолл учебного корпуса";
+            richTextBox1_TextChanged();
         }
 
         private void button7_Click(object sender, EventArgs e) // столовая
@@ -167,6 +181,8 @@ namespace Текстовый_квест_с_интерфейсом
             button13.Visible = false;
             button14.Visible = false;
             button15.Visible = false;
+            richTextBox1.Text += "\n\rМоя любимая столовка";
+            richTextBox1_TextChanged();
         }
 
         private void button8_Click(object sender, EventArgs e) // кабинет
@@ -183,6 +199,8 @@ namespace Текстовый_квест_с_интерфейсом
             button15.Visible = false;
             button10.Visible = false;
             button16.Visible = true;
+            richTextBox1.Text += "\n\rКабинет преподавателя";
+            richTextBox1_TextChanged();
         }
 
         private void button9_Click(object sender, EventArgs e)//показ инвентаря
@@ -200,6 +218,7 @@ namespace Текстовый_квест_с_интерфейсом
                 richTextBox1.Text += "\n\rЯ что-то нашёл!";
             else
                 richTextBox1.Text += "\n\rТут ничего нет";
+            richTextBox1_TextChanged();
         }
 
         private void button10_Click(object sender, EventArgs e) // разговор с нпс
@@ -214,7 +233,7 @@ namespace Текстовый_квест_с_интерфейсом
             }
             else
                 richTextBox1.Text += "\n\rЗдесь никого нет";
-            
+            richTextBox1_TextChanged();
         }
         
         private void button12_Click(object sender, EventArgs e) // реплика 1
@@ -228,6 +247,7 @@ namespace Текстовый_квест_с_интерфейсом
                 richTextBox1.Text += "\n\rМы уже всё обсудили";
             else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 4)
                 richTextBox1.Text += "\n\rМне следует подобрать другие слова";
+            richTextBox1_TextChanged();
         }
 
         private void button13_Click(object sender, EventArgs e) // реплика 2
@@ -241,6 +261,7 @@ namespace Текстовый_квест_с_интерфейсом
                 richTextBox1.Text += "\n\rМы уже всё обсудили";
             else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 4)
                 richTextBox1.Text += "\n\rМне следует подобрать другие слова";
+            richTextBox1_TextChanged();
         }
 
         private void button14_Click(object sender, EventArgs e) // реплика 3
@@ -254,6 +275,7 @@ namespace Текстовый_квест_с_интерфейсом
                 richTextBox1.Text += "\n\rМы уже всё обсудили";
             else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 4)
                 richTextBox1.Text += "\n\rМне следует подобрать другие слова";
+            richTextBox1_TextChanged();
         }
 
         private void button15_Click(object sender, EventArgs e) //реплика 4
@@ -267,6 +289,7 @@ namespace Текстовый_квест_с_интерфейсом
                 richTextBox1.Text += "\n\rМы уже всё обсудили";
             else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 4)
                 richTextBox1.Text += "\n\rМне следует подобрать другие слова";
+            richTextBox1_TextChanged();
         }
 
         private void button16_Click(object sender, EventArgs e) //тут будет сдача экзамена
@@ -277,6 +300,7 @@ namespace Текстовый_квест_с_интерфейсом
                 if (Count == 0)
                 {
                     richTextBox1.Text += "\n\rИ чем я только думал, когда шёл на экзамен как на праздник???";
+                    richTextBox1_TextChanged();
                     Thread.Sleep(3000);
                     pictureBox2.Image = Properties.Resources.E_0;
                     pictureBox2.Visible = true;
@@ -284,6 +308,7 @@ namespace Текстовый_квест_с_интерфейсом
                 if ((Count > 0) && (Count < 3))
                 {
                     richTextBox1.Text += "\n\rНу что это такое?! Меня просто завалили!!! Я же был готов на все... хотя не был я готов даже на троечку";
+                    richTextBox1_TextChanged();
                     Thread.Sleep(3000);
                     pictureBox2.Image = Properties.Resources.E_1;
                     pictureBox2.Visible = true;
@@ -291,6 +316,7 @@ namespace Текстовый_квест_с_интерфейсом
                 if (Count == 3)
                 {
                     richTextBox1.Text += "\n\rТройка тоже сойдёт. Главное - что теперь можно слова полежать";
+                    richTextBox1_TextChanged();
                     Thread.Sleep(3000);
                     pictureBox2.Image = Properties.Resources.E_2;
                     pictureBox2.Visible = true;
@@ -298,6 +324,7 @@ namespace Текстовый_квест_с_интерфейсом
                 if (Count == 4)
                 {
                     richTextBox1.Text += "\n\rЯ не такой уж и глупый! Четвёрка - это хорошо, но в следующий раз надо будет подготовиться на пятёрку";
+                    richTextBox1_TextChanged();
                     Thread.Sleep(3000);
                     pictureBox2.Image = Properties.Resources.E_3;
                     pictureBox2.Visible = true;
@@ -305,6 +332,7 @@ namespace Текстовый_квест_с_интерфейсом
                 if (Count == 5)
                 {
                     richTextBox1.Text += "\n\rКакой же я молодец! Надо позвонить родителям, порадую их своей пятёркой";
+                    richTextBox1_TextChanged();
                     Thread.Sleep(3000);
                     pictureBox2.Image = Properties.Resources.E_4;
                     pictureBox2.Visible = true;
@@ -312,13 +340,15 @@ namespace Текстовый_квест_с_интерфейсом
                 if (Count > 5)
                 {
                     richTextBox1.Text += "\n\rЯ - сверхразум";
+                    richTextBox1_TextChanged();
                     Thread.Sleep(3000);
                     pictureBox2.Image = Properties.Resources.E_5;
                     pictureBox2.Visible = true;
                 }
             }
             else 
-            { 
+            {
+                richTextBox1_TextChanged();
                 richTextBox1.Text += "\n\rЯ НЕ УСПЕЕЕЕЕЕЕЛ";
                 Thread.Sleep(3000);
                 pictureBox2.Image = Properties.Resources.E_Loser;
@@ -330,6 +360,13 @@ namespace Текстовый_квест_с_интерфейсом
         private void button17_Click(object sender, EventArgs e) // Рестарт игры
         {
             Application.Restart();
+        }
+
+
+        private void richTextBox1_TextChanged()
+        {
+            richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            richTextBox1.ScrollToCaret();
         }
     }
 }
