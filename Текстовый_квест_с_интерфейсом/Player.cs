@@ -63,5 +63,16 @@ namespace Текстовый_квест_с_интерфейсом
         {
             Inventory.Add(item);
         }
+
+        public int Pass_exam()
+        {
+            int count = 0;
+            foreach (Item item in Inventory)
+            {
+                if (item is Item_usefull)
+                    count++;
+            }
+            return count;
+        }
     }
 }
