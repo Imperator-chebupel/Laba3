@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace Текстовый_квест_с_интерфейсом
             button14.Visible = false;
             button15.Visible = false;
             button16.Visible = false;
+            pictureBox2.Visible = false;
             Item_usefull Pen = new Item_usefull { X_ = 0, Y_ = 0, Name_ = "Ручка", Discription_ = "Самый важный инструмент после собственной головы" };
             Item_useless Pechenka = new Item_useless { X_ = 1, Y_ = 0, Name_ = "Печенье", Discription_ = "Выглядит вкусно" };
             Item_usefull Zapisi = new Item_usefull { X_ =9, Y_=0,Name_ = "Записи", Discription_ = "То немногое, что Вадим успел записать за 2 лекции, на которых он был" };
@@ -57,7 +59,6 @@ namespace Текстовый_квест_с_интерфейсом
             pictureBox1.Image = Properties.Resources.L_0;
             richTextBox1.Text = "Я проснулся в 7 часов утра в предвкушении замечательного дня...\n\rОднако я совсем забыл, " +
                 "что сегодня экзамен! Так я ещё и не готов!\n\rМне нужно найти: канцелярию, студенческий билет и как можно больше конспектов";
-
         }
 
         private void button1_Click_1(object sender, EventArgs e) //Комната
@@ -270,21 +271,65 @@ namespace Текстовый_квест_с_интерфейсом
 
         private void button16_Click(object sender, EventArgs e) //тут будет сдача экзамена
         {
-            int Count = player.Pass_exam();
-            if (Count == 0)
-                richTextBox1.Text += "\n\rИ чем я только думал, когда шёл на экзамен как на праздник???";
-            if ((Count > 0) && (Count < 3))
-                richTextBox1.Text += "\n\rНу что это такое?! Меня просто завалили!!! Я же был готов на все... хотя не был я готов даже на троечку";
-            if (Count == 3)
-                richTextBox1.Text += "\n\rТройка тоже сойдёт. Главное - что теперь можно слова полежать";
-            if (Count == 4)
-                richTextBox1.Text += "\n\rЯ не такой уж и глупый! Четвёрка - это хорошо, но в следующий раз надо будет подготовиться на пятёрку";
-            if (Count == 5)
-                richTextBox1.Text += "\n\rКакой же я молодец! Надо позвонить родителям, порадую их своей пятёркой";
-            if (Count > 5)
-                richTextBox1.Text += "\n\rЯ - сверхразум";
-            Thread.Sleep(5000);
+            if (player.Time_ > 0)
+            {
+                int Count = player.Pass_exam();
+                if (Count == 0)
+                {
+                    richTextBox1.Text += "\n\rИ чем я только думал, когда шёл на экзамен как на праздник???";
+                    Thread.Sleep(3000);
+                    pictureBox2.Image = Properties.Resources.E_0;
+                    pictureBox2.Visible = true;
+                }
+                if ((Count > 0) && (Count < 3))
+                {
+                    richTextBox1.Text += "\n\rНу что это такое?! Меня просто завалили!!! Я же был готов на все... хотя не был я готов даже на троечку";
+                    Thread.Sleep(3000);
+                    pictureBox2.Image = Properties.Resources.E_1;
+                    pictureBox2.Visible = true;
+                }
+                if (Count == 3)
+                {
+                    richTextBox1.Text += "\n\rТройка тоже сойдёт. Главное - что теперь можно слова полежать";
+                    Thread.Sleep(3000);
+                    pictureBox2.Image = Properties.Resources.E_2;
+                    pictureBox2.Visible = true;
+                }
+                if (Count == 4)
+                {
+                    richTextBox1.Text += "\n\rЯ не такой уж и глупый! Четвёрка - это хорошо, но в следующий раз надо будет подготовиться на пятёрку";
+                    Thread.Sleep(3000);
+                    pictureBox2.Image = Properties.Resources.E_3;
+                    pictureBox2.Visible = true;
+                }
+                if (Count == 5)
+                {
+                    richTextBox1.Text += "\n\rКакой же я молодец! Надо позвонить родителям, порадую их своей пятёркой";
+                    Thread.Sleep(3000);
+                    pictureBox2.Image = Properties.Resources.E_4;
+                    pictureBox2.Visible = true;
+                }
+                if (Count > 5)
+                {
+                    richTextBox1.Text += "\n\rЯ - сверхразум";
+                    Thread.Sleep(3000);
+                    pictureBox2.Image = Properties.Resources.E_5;
+                    pictureBox2.Visible = true;
+                }
+            }
+            else 
+            { 
+                richTextBox1.Text += "\n\rЯ НЕ УСПЕЕЕЕЕЕЕЛ";
+                Thread.Sleep(3000);
+                pictureBox2.Image = Properties.Resources.E_Loser;
+                pictureBox2.Visible = true;
+            }
 
+        }
+
+        private void button17_Click(object sender, EventArgs e) // Рестарт игры
+        {
+            Application.Restart();
         }
     }
 }
