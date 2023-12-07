@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -269,7 +270,21 @@ namespace Текстовый_квест_с_интерфейсом
 
         private void button16_Click(object sender, EventArgs e) //тут будет сдача экзамена
         {
-            int Items = 0;
+            int Count = player.Pass_exam();
+            if (Count == 0)
+                richTextBox1.Text += "\n\rИ чем я только думал, когда шёл на экзамен как на праздник???";
+            if ((Count > 0) && (Count < 3))
+                richTextBox1.Text += "\n\rНу что это такое?! Меня просто завалили!!! Я же был готов на все... хотя не был я готов даже на троечку";
+            if (Count == 3)
+                richTextBox1.Text += "\n\rТройка тоже сойдёт. Главное - что теперь можно слова полежать";
+            if (Count == 4)
+                richTextBox1.Text += "\n\rЯ не такой уж и глупый! Четвёрка - это хорошо, но в следующий раз надо будет подготовиться на пятёрку";
+            if (Count == 5)
+                richTextBox1.Text += "\n\rКакой же я молодец! Надо позвонить родителям, порадую их своей пятёркой";
+            if (Count > 5)
+                richTextBox1.Text += "\n\rЯ - сверхразум";
+            Thread.Sleep(5000);
+
         }
     }
 }
