@@ -12,6 +12,8 @@ namespace Текстовый_квест_с_интерфейсом
         int Y;
         string Name;
         Item item;
+        int Answer;
+        string Advice; 
 
         public int X_
         {
@@ -31,12 +33,24 @@ namespace Текстовый_квест_с_интерфейсом
             set { Name = value; }
         }
 
+        public string Advice_
+        {
+            get { return Advice; }
+            set { Advice = value; }
+        }
+
+
         public Item item_
         {
             get { return item; }
             set { item = value;}
         }
 
+        public int Answer_
+        {
+            get { return Answer; }
+            set { Answer = value; }
+        }
 
 
     }

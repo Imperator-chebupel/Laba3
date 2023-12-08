@@ -80,5 +80,17 @@ namespace Текстовый_квест_с_интерфейсом
             }
             return false;
         }
+
+        public string NPC_Advice(int x_p, int y_p)
+        {
+            foreach (NPC npc in NPCs)
+            {
+                if ((npc.X_ == x_p) && (npc.Y_ == y_p) && (npc.Advice_ != null))
+                {
+                    return npc.Name_ + ": " + npc.Advice_;
+                }
+            }
+            return "";
+        }
     }
 }

@@ -28,18 +28,18 @@ namespace Текстовый_квест_с_интерфейсом
             Item_usefull Pen = new Item_usefull { X_ = 0, Y_ = 0, Name_ = "Ручка", Discription_ = "Самый важный инструмент после собственной головы" };
             Item_useless Pechenka = new Item_useless { X_ = 1, Y_ = 0, Name_ = "Печенье", Discription_ = "Выглядит вкусно" };
             Item_usefull Zapisi = new Item_usefull { X_ =9, Y_=0,Name_ = "Записи", Discription_ = "То немногое, что Вадим успел записать за 2 лекции, на которых он был" };
-            NPC Vadim = new NPC {X_ =1, Y_ = 0, Name_ = "Вадим", item_ = Zapisi, Answer_ = 1 };
+            NPC Vadim = new NPC {X_ =1, Y_ = 0, Name_ = "Вадим", item_ = Zapisi, Answer_ = 1, Advice_ = "Я забыл свой учебник на скамейке, принеси пожалуйста" };
             Item_useless Nosok = new Item_useless { X_ = 2, Y_ = 0, Name_ = "Носок", Discription_ = "Левый... Осталось найти правый" };
             Item_usefull Bilet = new Item_usefull { Name_ = "Студенческий билет", Discription_ = "Удостоверение студенческой личности" };
-            NPC Zina = new NPC { X_ = 2, Y_ = 0, Name_ = "Зинаида", Answer_ = 4, item_ =Bilet };
+            NPC Zina = new NPC { X_ = 2, Y_ = 0, Name_ = "Зинаида", Answer_ = 4, item_ = Bilet };
             Item_usefull Ksiva = new Item_usefull {Name_ = "Ксива", Discription_ = "Какая-то важная бумажка. Не знаю, как она оказалась у кота" };
-            NPC Cat = new NPC {X_=1, Y_=1, Name_ = "Кот", Answer_ = 3, item_ = Ksiva };
+            NPC Cat = new NPC {X_=1, Y_=1, Name_ = "Кот", Answer_ = 3, item_ = Ksiva, Advice_ = "Мяу" };
             Item_useless Konfeta = new Item_useless { X_ = 0, Y_ = 1, Name_ = "Конфета", Discription_ = "Обычная конфета с пола" };
             Item_useless Pelmeni = new Item_useless {Name_ = "Пачка пельменей", Discription_ = "Продукт с непредсказуемой начинкой, лучше скушаю вечером" };
-            NPC Kassir = new NPC {X_=0, Y_ = 1, Name_ = "Ашот", Answer_ = 2, item_ = Pelmeni };
+            NPC Kassir = new NPC {X_=0, Y_ = 1, Name_ = "Ашот", Answer_ = 2, item_ = Pelmeni, Advice_ = "Ты никуда не опаздываешь?" };
             Item_usefull Book = new Item_usefull { Name_ = "Учебник", Discription_ = "Что-то на умном и для умных - ещё не скоро смогу прочитать",X_ = 2, Y_ = 1 };
             Item_usefull Spisok = new Item_usefull {Name_ = "С.Ж.В.", Discription_ = "Список жёстких вопросов с экзамена, на них чаще всего валят студентов" };
-            NPC Ohr = new NPC { X_ = 0, Y_ = 2, Name_ = "Охранник", Answer_ = 1, item_ = Spisok };
+            NPC Ohr = new NPC { X_ = 0, Y_ = 2, Name_ = "Охранник", Answer_ = 1, item_ = Spisok, Advice_ = "Ты ничего не забыл в своей комнате?" };
             Item_usefull Str = new Item_usefull {X_ =1, Y_=2, Name_ = "Стиралка", Discription_ = "Нлавное - не продырявить листок во время стирания своих каракулей" };
 
 
@@ -242,7 +242,10 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             int Code = 1;
             if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 2)
+            {
                 richTextBox1.Text += "\n\rМне что-то передали!";
+                richTextBox1.Text +="\n\r" + Locations.NPC_Advice(player.X_, player.Y_);
+            }
             else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 1)
                 richTextBox1.Text += "\n\rМы уже всё обсудили";
             else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 4)
@@ -256,7 +259,10 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             int Code = 2;
             if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 2)
+            {
                 richTextBox1.Text += "\n\rМне что-то передали!";
+                richTextBox1.Text += "\n\r" + Locations.NPC_Advice(player.X_, player.Y_);
+            }
             else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 1)
                 richTextBox1.Text += "\n\rМы уже всё обсудили";
             else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 4)
@@ -270,7 +276,10 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             int Code = 3;
             if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 2)
+            {
                 richTextBox1.Text += "\n\rМне что-то передали!";
+                richTextBox1.Text += "\n\r" + Locations.NPC_Advice(player.X_, player.Y_);
+            }
             else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 1)
                 richTextBox1.Text += "\n\rМы уже всё обсудили";
             else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 4)
@@ -284,7 +293,10 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             int Code = 4;
             if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 2)
+            {
                 richTextBox1.Text += "\n\rМне что-то передали!";
+                richTextBox1.Text += "\n\r" + Locations.NPC_Advice(player.X_, player.Y_);
+            }
             else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 1)
                 richTextBox1.Text += "\n\rМы уже всё обсудили";
             else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 4)
