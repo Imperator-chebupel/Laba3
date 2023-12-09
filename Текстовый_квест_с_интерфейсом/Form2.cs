@@ -34,7 +34,9 @@ namespace Текстовый_квест_с_интерфейсом
 
         private void button2_Click(object sender, EventArgs e) //использование временных предметов
         {
-            //player.Time_ += player.Change_Time(); Пока не работает
+            int Was = player.Time_;
+            player.Time_ += player.Change_Time();
+            richTextBox1.Text += "\n\rВремя сдвинулось на "+  (player.Time_ - Was).ToString();
         }
     }
 }

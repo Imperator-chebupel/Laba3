@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -41,6 +42,9 @@ namespace Текстовый_квест_с_интерфейсом
             Item_usefull Spisok = new Item_usefull {Name_ = "С.Ж.В.", Discription_ = "Список жёстких вопросов с экзамена, на них чаще всего валят студентов" };
             NPC Ohr = new NPC { X_ = 0, Y_ = 2, Name_ = "Охранник", Answer_ = 1, item_ = Spisok, Advice_ = "Ты ничего не забыл в своей комнате?" };
             Item_usefull Str = new Item_usefull {X_ =1, Y_=2, Name_ = "Стиралка", Discription_ = "Нлавное - не продырявить листок во время стирания своих каракулей" };
+            Item_timer Clock = new Item_timer {Name_ = "Странные часы", Discription_ = "Они идут в обратную сторону?!", X_ = 0, Y_=0, TIME_ = 15 };
+            Item_timer Sand_clock = new Item_timer { Name_ = "Песочные часы", Discription_ = "Треснувшие песочные часы на 30 минут", X_ = 2, Y_ = 1, TIME_ = -30};
+
 
 
             Locations.All_items(Pen);
@@ -54,6 +58,9 @@ namespace Текстовый_квест_с_интерфейсом
             Locations.All_items(Book);
             Locations.All_NPCs(Ohr);
             Locations.All_items(Str);
+            Locations.All_items(Clock);
+            Locations.All_items(Sand_clock);
+
 
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_0;
