@@ -52,12 +52,26 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="item.cs" />
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Item.cs" />
+    <Compile Include="Item_timer.cs" />
+    <Compile Include="Item_usefull.cs" />
+    <Compile Include="Item_useless.cs" />
+    <Compile Include="NPC.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stuff.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -108,6 +122,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\L_8.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\E_0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\E_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\E_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\E_3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\E_4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\E_5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\E_Loser.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
