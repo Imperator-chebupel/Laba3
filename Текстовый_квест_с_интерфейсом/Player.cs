@@ -12,6 +12,7 @@ namespace Текстовый_квест_с_интерфейсом
         int X; 
         int Y;
         List<Item> Inventory = new List<Item>();
+        List<Item_timer> Secret = new List<Item_timer>();
 
         public int Time_
         {
@@ -64,6 +65,11 @@ namespace Текстовый_квест_с_интерфейсом
             Inventory.Add(item);
         }
 
+        public void Pick_up_time(Item_timer item)
+        {
+            Secret.Add(item);
+        }
+
         public int Pass_exam()
         {
             int count = 0;
@@ -74,5 +80,19 @@ namespace Текстовый_квест_с_интерфейсом
             }
             return count;
         }
+
+        /* Тут будет изменение времени
+        public int Change_Time () 
+        {
+            int T = 0;
+            foreach (Item_timer item in Inventory)
+            {
+                if (item.TIME_ != null) 
+                {
+                    T += item.TIME_;
+                }
+            }
+            return T;
+        }*/
     }
 }
