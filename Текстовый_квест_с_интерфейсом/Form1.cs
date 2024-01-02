@@ -17,55 +17,28 @@ namespace Текстовый_квест_с_интерфейсом
     {
         Player player = new Player {X_ =0, Y_ = 0 };
         Stuff Locations = new Stuff();
-        public Form1()
+        public Form1(List<NPC> npcs, List<Item> items )
         {
             InitializeComponent();
-            button12.Visible = false;
-            button13.Visible = false;
-            button14.Visible = false;
-            button15.Visible = false;
+            Hide_dialogs();
             button16.Visible = false;
             pictureBox2.Visible = false;
-            Item_usefull Pen = new Item_usefull { X_ = 0, Y_ = 0, Name_ = "Ручка", Discription_ = "Самый важный инструмент после собственной головы" };
-            Item_useless Pechenka = new Item_useless { X_ = 1, Y_ = 0, Name_ = "Печенье", Discription_ = "Выглядит вкусно" };
-            Item_usefull Zapisi = new Item_usefull { X_ =9, Y_=0,Name_ = "Записи", Discription_ = "То немногое, что Вадим успел записать за 2 лекции, на которых он был" };
-            NPC Vadim = new NPC {X_ =1, Y_ = 0, Name_ = "Вадим", item_ = Zapisi, Answer_ = 1, Advice_ = "Я забыл свой учебник на скамейке, принеси пожалуйста" };
-            Item_useless Nosok = new Item_useless { X_ = 2, Y_ = 0, Name_ = "Носок", Discription_ = "Левый... Осталось найти правый" };
-            Item_usefull Bilet = new Item_usefull { Name_ = "Студенческий билет", Discription_ = "Удостоверение студенческой личности" };
-            NPC Zina = new NPC { X_ = 2, Y_ = 0, Name_ = "Зинаида", Answer_ = 4, item_ = Bilet };
-            Item_usefull Ksiva = new Item_usefull {Name_ = "Ксива", Discription_ = "Какая-то важная бумажка. Не знаю, как она оказалась у кота" };
-            NPC Cat = new NPC {X_=1, Y_=1, Name_ = "Кот", Answer_ = 3, item_ = Ksiva, Advice_ = "Мяу" };
-            Item_useless Konfeta = new Item_useless { X_ = 0, Y_ = 1, Name_ = "Конфета", Discription_ = "Обычная конфета с пола" };
-            Item_useless Pelmeni = new Item_useless {Name_ = "Пачка пельменей", Discription_ = "Продукт с непредсказуемой начинкой, лучше скушаю вечером" };
-            NPC Kassir = new NPC {X_=0, Y_ = 1, Name_ = "Ашот", Answer_ = 2, item_ = Pelmeni, Advice_ = "Ты никуда не опаздываешь?" };
-            Item_usefull Book = new Item_usefull { Name_ = "Учебник", Discription_ = "Что-то на умном и для умных - ещё не скоро смогу прочитать",X_ = 2, Y_ = 1 };
-            Item_usefull Spisok = new Item_usefull {Name_ = "С.Ж.В.", Discription_ = "Список жёстких вопросов с экзамена, на них чаще всего валят студентов" };
-            NPC Ohr = new NPC { X_ = 0, Y_ = 2, Name_ = "Охранник", Answer_ = 1, item_ = Spisok, Advice_ = "Ты ничего не забыл в своей комнате?" };
-            Item_usefull Str = new Item_usefull {X_ =1, Y_=2, Name_ = "Стиралка", Discription_ = "Нлавное - не продырявить листок во время стирания своих каракулей" };
-            Item_timer Clock = new Item_timer {Name_ = "Странные часы", Discription_ = "Они идут в обратную сторону?!", X_ = 0, Y_=0, TIME_ = 15 };
-            Item_timer Sand_clock = new Item_timer { Name_ = "Песочные часы", Discription_ = "Треснувшие песочные часы на 30 минут", X_ = 2, Y_ = 1, TIME_ = -30};
 
-
-
-            Locations.All_items(Pen);
-            Locations.All_items(Pechenka);
-            Locations.All_NPCs(Vadim);
-            Locations.All_items(Nosok);
-            Locations.All_NPCs(Zina);
-            Locations.All_NPCs(Cat);
-            Locations.All_items(Konfeta);
-            Locations.All_NPCs(Kassir);
-            Locations.All_items(Book);
-            Locations.All_NPCs(Ohr);
-            Locations.All_items(Str);
-            Locations.All_items(Clock);
-            Locations.All_items(Sand_clock);
+            foreach (NPC N in npcs)
+            {
+                Locations.All_NPCs(N);
+            }
+            foreach (Item I in items)
+            {
+                Locations.All_items(I);
+            }
 
 
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_0;
             richTextBox1.Text = "Я проснулся в 7 часов утра в предвкушении замечательного дня...\n\rОднако я совсем забыл, " +
                 "что сегодня экзамен! Так я ещё и не готов!\n\rМне нужно найти: канцелярию, студенческий билет и как можно больше конспектов\n\rСейчас я в своей комнате";
+            this.Text = "Текстовый_квест";
         }
 
         private void button1_Click_1(object sender, EventArgs e) //Комната
@@ -78,6 +51,7 @@ namespace Текстовый_квест_с_интерфейсом
             pictureBox1.Image = Properties.Resources.L_0; //фото
             richTextBox1.Text += "\n\rМоя комната";
             richTextBox1_TextChanged();
+            Hide_dialogs();
         }
 
         private void button1_Click(object sender, EventArgs e) // Зал
@@ -88,10 +62,7 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Clear();
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_1;//фото
-            button12.Visible = false;
-            button13.Visible = false;
-            button14.Visible = false;
-            button15.Visible = false;
+            Hide_dialogs();
             richTextBox1.Text += "\n\rЗал общежития";
             richTextBox1_TextChanged();
         }
@@ -104,10 +75,7 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Clear();
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_2;//фото
-            button12.Visible = false;
-            button13.Visible = false;
-            button14.Visible = false;
-            button15.Visible = false;
+            Hide_dialogs();
             richTextBox1.Text += "\n\rПервый этаж общежития";
             richTextBox1_TextChanged();
         }
@@ -120,10 +88,7 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Clear();
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_3;//фото
-            button12.Visible = false;
-            button13.Visible = false;
-            button14.Visible = false;
-            button15.Visible = false;
+            Hide_dialogs();
             richTextBox1.Text += "\n\rМагазин 'Троечка'";
             richTextBox1_TextChanged();
         }
@@ -136,10 +101,7 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Clear();
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_4;//фото
-            button12.Visible = false;
-            button13.Visible = false;
-            button14.Visible = false;
-            button15.Visible = false;
+            Hide_dialogs();
             richTextBox1.Text += "\n\rСтарые гаражи";
             richTextBox1_TextChanged();
         }
@@ -152,10 +114,7 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Clear();
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_5;//фото
-            button12.Visible = false;
-            button13.Visible = false;
-            button14.Visible = false;
-            button15.Visible = false;
+            Hide_dialogs();
             richTextBox1.Text += "\n\rСкамейка. Просто скамейка";
             richTextBox1_TextChanged();
         }
@@ -168,10 +127,7 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Clear();
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_6;//фото
-            button12.Visible = false;
-            button13.Visible = false;
-            button14.Visible = false;
-            button15.Visible = false;
+            Hide_dialogs();
             richTextBox1.Text += "\n\rХолл учебного корпуса";
             richTextBox1_TextChanged();
         }
@@ -184,10 +140,7 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Clear();
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_7;//фото
-            button12.Visible = false;
-            button13.Visible = false;
-            button14.Visible = false;
-            button15.Visible = false;
+            Hide_dialogs();
             richTextBox1.Text += "\n\rМоя любимая столовка";
             richTextBox1_TextChanged();
         }
@@ -200,10 +153,7 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Clear();
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             pictureBox1.Image = Properties.Resources.L_8;//фото
-            button12.Visible = false;
-            button13.Visible = false;
-            button14.Visible = false;
-            button15.Visible = false;
+            Hide_dialogs();
             button10.Visible = false;
             button16.Visible = true;
             richTextBox1.Text += "\n\rКабинет преподавателя";
@@ -245,70 +195,22 @@ namespace Текстовый_квест_с_интерфейсом
         
         private void button12_Click(object sender, EventArgs e) // реплика 1
         {
-            player.Time_ = player.Time_ - 1;
-            textBox1.Text = "Времени осталось: " + player.Time_.ToString();
-            int Code = 1;
-            if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 2)
-            {
-                richTextBox1.Text += "\n\rМне что-то передали!";
-                richTextBox1.Text +="\n\r" + Locations.NPC_Advice(player.X_, player.Y_);
-            }
-            else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 1)
-                richTextBox1.Text += "\n\rМы уже всё обсудили";
-            else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 4)
-                richTextBox1.Text += "\n\rМне следует подобрать другие слова";
-            richTextBox1_TextChanged();
+            Speech(1);
         }
 
         private void button13_Click(object sender, EventArgs e) // реплика 2
         {
-            player.Time_ = player.Time_ - 1;
-            textBox1.Text = "Времени осталось: " + player.Time_.ToString();
-            int Code = 2;
-            if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 2)
-            {
-                richTextBox1.Text += "\n\rМне что-то передали!";
-                richTextBox1.Text += "\n\r" + Locations.NPC_Advice(player.X_, player.Y_);
-            }
-            else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 1)
-                richTextBox1.Text += "\n\rМы уже всё обсудили";
-            else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 4)
-                richTextBox1.Text += "\n\rМне следует подобрать другие слова";
-            richTextBox1_TextChanged();
+            Speech(2);
         }
 
         private void button14_Click(object sender, EventArgs e) // реплика 3
         {
-            player.Time_ = player.Time_ - 1;
-            textBox1.Text = "Времени осталось: " + player.Time_.ToString();
-            int Code = 3;
-            if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 2)
-            {
-                richTextBox1.Text += "\n\rМне что-то передали!";
-                richTextBox1.Text += "\n\r" + Locations.NPC_Advice(player.X_, player.Y_);
-            }
-            else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 1)
-                richTextBox1.Text += "\n\rМы уже всё обсудили";
-            else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 4)
-                richTextBox1.Text += "\n\rМне следует подобрать другие слова";
-            richTextBox1_TextChanged();
+            Speech(3);
         }
 
         private void button15_Click(object sender, EventArgs e) //реплика 4
         {
-            player.Time_ = player.Time_ - 1;
-            textBox1.Text = "Времени осталось: " + player.Time_.ToString();
-            int Code = 4;
-            if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 2)
-            {
-                richTextBox1.Text += "\n\rМне что-то передали!";
-                richTextBox1.Text += "\n\r" + Locations.NPC_Advice(player.X_, player.Y_);
-            }
-            else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 1)
-                richTextBox1.Text += "\n\rМы уже всё обсудили";
-            else if (Locations.Ask_for_item(player.X_, player.Y_, player, Code) == 4)
-                richTextBox1.Text += "\n\rМне следует подобрать другие слова";
-            richTextBox1_TextChanged();
+            Speech(4);
         }
 
         private void button16_Click(object sender, EventArgs e) //тут будет сдача экзамена
@@ -378,7 +280,8 @@ namespace Текстовый_квест_с_интерфейсом
 
         private void button17_Click(object sender, EventArgs e) // Рестарт игры
         {
-            Application.Restart();
+            Form3 form3 = new Form3();
+            form3.Show();//подтверждение
         }
 
 
@@ -386,6 +289,30 @@ namespace Текстовый_квест_с_интерфейсом
         {
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
             richTextBox1.ScrollToCaret();
+        }
+
+        private void Hide_dialogs()
+        {
+            button12.Visible = false;
+            button13.Visible = false;
+            button14.Visible = false;
+            button15.Visible = false;
+        }
+
+        private void Speech(int Number)
+        {
+            player.Time_ = player.Time_ - 1;
+            textBox1.Text = "Времени осталось: " + player.Time_.ToString();
+            if (Locations.Ask_for_item(player.X_, player.Y_, player, Number) == 2)
+            {
+                richTextBox1.Text += "\n\rМне что-то передали!";
+                richTextBox1.Text += "\n\r" + Locations.NPC_Advice(player.X_, player.Y_);
+            }
+            else if (Locations.Ask_for_item(player.X_, player.Y_, player, Number) == 1)
+                richTextBox1.Text += "\n\rМы уже всё обсудили";
+            else if (Locations.Ask_for_item(player.X_, player.Y_, player, Number) == 4)
+                richTextBox1.Text += "\n\rМне следует подобрать другие слова";
+            richTextBox1_TextChanged();
         }
     }
 }
