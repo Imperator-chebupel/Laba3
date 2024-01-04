@@ -180,13 +180,17 @@ namespace Текстовый_квест_с_интерфейсом
 
         private void button10_Click(object sender, EventArgs e) // разговор с нпс
         {
-            if (Locations.NPC_near(player.X_, player.Y_))
+            if (Locations.NPC_near(player.X_, player.Y_) != -1 )
             {
                 richTextBox1.Text += "\n\rТут можно поговорить c " + Locations.NPC_name(player.X_, player.Y_);
                 button12.Visible = true;
+                button12.Text = player.Frases[Locations.NPC_near(player.X_, player.Y_), 0];
                 button13.Visible = true;
+                button13.Text = player.Frases[Locations.NPC_near(player.X_, player.Y_), 1];
                 button14.Visible = true;
+                button14.Text = player.Frases[Locations.NPC_near(player.X_, player.Y_), 2];
                 button15.Visible = true;
+                button15.Text = player.Frases[Locations.NPC_near(player.X_, player.Y_), 3];
             }
             else
                 richTextBox1.Text += "\n\rЗдесь никого нет";
@@ -296,6 +300,7 @@ namespace Текстовый_квест_с_интерфейсом
         {
             player.Time_ = player.Time_ - 1;
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
+
             richTextBox1.Text += Locations.Ask_for_item(player.X_, player.Y_, player, Number);
             richTextBox1_TextChanged();
         }
