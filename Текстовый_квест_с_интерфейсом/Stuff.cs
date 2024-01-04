@@ -35,7 +35,6 @@ namespace Текстовый_квест_с_интерфейсом
 
         public bool Search_item(int x_p, int y_p, Player player)
         {
-            bool A; //проверка на существование предмета
             foreach (Item item in Items)
             {
                 if ((item.X_ == x_p) && (item.Y_ == y_p))
@@ -48,7 +47,7 @@ namespace Текстовый_квест_с_интерфейсом
             return false;
         }
         
-        public int Ask_for_item(int x_p, int y_p, Player player, int code)
+        public string Ask_for_item(int x_p, int y_p, Player player, int code)
         {
             foreach (NPC npc in NPCs)
             {
@@ -58,27 +57,27 @@ namespace Текстовый_квест_с_интерфейсом
                     {
                         player.Pick_up(npc.item_);
                         Take_item_from(npc.item_, npc);
-                        return 2;
+                        return "\n\r" + "Я: " + player.Frases[npc.Index_, npc.Answer_ - 1] + NPC_Advice(x_p, y_p) + "\n\rМне что-то передали!";
                     }
                     else
-                        return 1;
+                        return "\n\rМы уже всё обсудили";
                 }
                 else if ((npc.X_ == x_p) && (npc.Y_ == y_p) && (code != npc.Answer_))
-                    return 4;
+                    return "\n\rЯ: " + player.Frases[npc.Index_, code - 1] + "\n\r" + npc.Name_ +": ......" + "\n\rМне следует подобрать другие слова";
             }
-            return 0;
+            return "";
         }
 
-            public bool NPC_near(int x_p, int y_p)
+            public int NPC_near(int x_p, int y_p)
         {
             foreach (NPC npc in NPCs)
             {
                 if ((npc.X_ == x_p) && (npc.Y_ == y_p))
                 {
-                        return true;
+                        return npc.Index_;
                 }
             }
-            return false;
+            return -1;
         }
 
         public string NPC_Advice(int x_p, int y_p)
@@ -87,7 +86,19 @@ namespace Текстовый_квест_с_интерфейсом
             {
                 if ((npc.X_ == x_p) && (npc.Y_ == y_p) && (npc.Advice_ != null))
                 {
-                    return npc.Name_ + ": " + npc.Advice_;
+                    return "\n\r" + npc.Name_ + ": " + npc.Advice_;
+                }
+            }
+            return "";
+        }
+
+        public string NPC_name(int x_p, int y_p)
+        {
+            foreach (NPC npc in NPCs)
+            {
+                if ((npc.X_ == x_p) && (npc.Y_ == y_p) && (npc.Advice_ != null))
+                {
+                    return npc.Name_;
                 }
             }
             return "";

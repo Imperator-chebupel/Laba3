@@ -180,13 +180,17 @@ namespace Текстовый_квест_с_интерфейсом
 
         private void button10_Click(object sender, EventArgs e) // разговор с нпс
         {
-            if (Locations.NPC_near(player.X_, player.Y_))
+            if (Locations.NPC_near(player.X_, player.Y_) != -1 )
             {
-                richTextBox1.Text += "\n\rТут можно с кем-то поговорить";
+                richTextBox1.Text += "\n\rТут можно поговорить c " + Locations.NPC_name(player.X_, player.Y_);
                 button12.Visible = true;
+                button12.Text = player.Frases[Locations.NPC_near(player.X_, player.Y_), 0];
                 button13.Visible = true;
+                button13.Text = player.Frases[Locations.NPC_near(player.X_, player.Y_), 1];
                 button14.Visible = true;
+                button14.Text = player.Frases[Locations.NPC_near(player.X_, player.Y_), 2];
                 button15.Visible = true;
+                button15.Text = player.Frases[Locations.NPC_near(player.X_, player.Y_), 3];
             }
             else
                 richTextBox1.Text += "\n\rЗдесь никого нет";
@@ -224,7 +228,6 @@ namespace Текстовый_квест_с_интерфейсом
                     richTextBox1_TextChanged();
                     Thread.Sleep(3000);
                     pictureBox2.Image = Properties.Resources.E_0;
-                    pictureBox2.Visible = true;
                 }
                 if ((Count > 0) && (Count < 3))
                 {
@@ -232,7 +235,6 @@ namespace Текстовый_квест_с_интерфейсом
                     richTextBox1_TextChanged();
                     Thread.Sleep(3000);
                     pictureBox2.Image = Properties.Resources.E_1;
-                    pictureBox2.Visible = true;
                 }
                 if (Count == 3)
                 {
@@ -240,7 +242,6 @@ namespace Текстовый_квест_с_интерфейсом
                     richTextBox1_TextChanged();
                     Thread.Sleep(3000);
                     pictureBox2.Image = Properties.Resources.E_2;
-                    pictureBox2.Visible = true;
                 }
                 if (Count == 4)
                 {
@@ -248,7 +249,6 @@ namespace Текстовый_квест_с_интерфейсом
                     richTextBox1_TextChanged();
                     Thread.Sleep(3000);
                     pictureBox2.Image = Properties.Resources.E_3;
-                    pictureBox2.Visible = true;
                 }
                 if (Count == 5)
                 {
@@ -256,7 +256,6 @@ namespace Текстовый_квест_с_интерфейсом
                     richTextBox1_TextChanged();
                     Thread.Sleep(3000);
                     pictureBox2.Image = Properties.Resources.E_4;
-                    pictureBox2.Visible = true;
                 }
                 if (Count > 5)
                 {
@@ -264,7 +263,6 @@ namespace Текстовый_квест_с_интерфейсом
                     richTextBox1_TextChanged();
                     Thread.Sleep(3000);
                     pictureBox2.Image = Properties.Resources.E_5;
-                    pictureBox2.Visible = true;
                 }
             }
             else 
@@ -273,9 +271,8 @@ namespace Текстовый_квест_с_интерфейсом
                 richTextBox1.Text += "\n\rЯ НЕ УСПЕЕЕЕЕЕЕЛ";
                 Thread.Sleep(3000);
                 pictureBox2.Image = Properties.Resources.E_Loser;
-                pictureBox2.Visible = true;
             }
-
+            pictureBox2.Visible = true;
         }
 
         private void button17_Click(object sender, EventArgs e) // Рестарт игры
@@ -303,15 +300,8 @@ namespace Текстовый_квест_с_интерфейсом
         {
             player.Time_ = player.Time_ - 1;
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
-            if (Locations.Ask_for_item(player.X_, player.Y_, player, Number) == 2)
-            {
-                richTextBox1.Text += "\n\rМне что-то передали!";
-                richTextBox1.Text += "\n\r" + Locations.NPC_Advice(player.X_, player.Y_);
-            }
-            else if (Locations.Ask_for_item(player.X_, player.Y_, player, Number) == 1)
-                richTextBox1.Text += "\n\rМы уже всё обсудили";
-            else if (Locations.Ask_for_item(player.X_, player.Y_, player, Number) == 4)
-                richTextBox1.Text += "\n\rМне следует подобрать другие слова";
+
+            richTextBox1.Text += Locations.Ask_for_item(player.X_, player.Y_, player, Number);
             richTextBox1_TextChanged();
         }
     }
