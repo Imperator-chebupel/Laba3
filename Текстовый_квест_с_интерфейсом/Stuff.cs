@@ -68,16 +68,16 @@ namespace Текстовый_квест_с_интерфейсом
             return "";
         }
 
-            public int NPC_near(int x_p, int y_p)
+            public bool NPC_near(int x_p, int y_p)
         {
             foreach (NPC npc in NPCs)
             {
                 if ((npc.X_ == x_p) && (npc.Y_ == y_p))
                 {
-                        return npc.Index_;
+                        return true;
                 }
             }
-            return -1;
+            return false;
         }
 
         public string NPC_Advice(int x_p, int y_p)

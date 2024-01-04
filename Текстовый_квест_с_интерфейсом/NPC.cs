@@ -13,6 +13,7 @@ namespace Текстовый_квест_с_интерфейсом
         string Name;
         Item item;
         int Answer;
+        int Index;
         string Advice; 
 
         public int X_
@@ -52,6 +53,11 @@ namespace Текстовый_квест_с_интерфейсом
             set { Answer = value; }
         }
 
+        public int Index_
+        {
+            get { return Index; }
+            set { Index = value; }
+        }
 
     }
 }
