@@ -15,7 +15,8 @@ namespace Текстовый_квест_с_интерфейсом
 {
     public partial class Form1 : Form
     {
-        Player player = new Player {X_ =0, Y_ = 0 };
+        FileWorker FW = new FileWorker();
+        Player player = new Player {X_ =0, Y_ = 0, Inventory = new List<Item>()};
         Stuff Locations = new Stuff();
         public Form1(List<NPC> npcs, List<Item> items )
         {
@@ -302,6 +303,24 @@ namespace Текстовый_квест_с_интерфейсом
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
 
             richTextBox1.Text += Locations.Ask_for_item(player.X_, player.Y_, player, Number);
+            richTextBox1_TextChanged();
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            FW.Write_to_JSON_player(player);
+            richTextBox1.Text += "\n\rПрогресс сохранён";
+            richTextBox1_TextChanged();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            player.X_ = FW.Read_the_JSON_player().X_;
+            player.Y_ = FW.Read_the_JSON_player().Y_;
+            player.Time_ = FW.Read_the_JSON_player().Time_;
+            player.Inventory = FW.Read_the_JSON_player().Inventory;
+            richTextBox1.Text += "\n\rПрогресс загружен";
+            textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             richTextBox1_TextChanged();
         }
     }

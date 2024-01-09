@@ -59,7 +59,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "Form3";
-            this.Text = "Restart";
+            this.Text = "Рестарт";
             this.ResumeLayout(false);
             this.PerformLayout();
 

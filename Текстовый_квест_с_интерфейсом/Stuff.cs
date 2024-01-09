@@ -9,8 +9,8 @@ namespace Текстовый_квест_с_интерфейсом
 {
     public class Stuff
     {
-        List<Item> Items = new List<Item>();
-        List<NPC> NPCs = new List<NPC>();
+        public List<Item> Items = new List<Item>();
+        public List<NPC> NPCs = new List<NPC>();
 
 
         public void All_items(Item item)
