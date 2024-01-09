@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Текстовый_квест_с_интерфейсом
 {
-    public class NPC
+    [Serializable] public class NPC
     {
         int X;
         int Y;
         string Name;
         Item item;
         int Answer;
-        int Index;
-        string Advice; 
+        int F_Number;
+        string Advice;
 
+        public string Index { get; set; }
         public int X_
         {
             get { return X; }
@@ -53,11 +54,16 @@ namespace Текстовый_квест_с_интерфейсом
             set { Answer = value; }
         }
 
-        public int Index_
+        public int F_Number_
         {
-            get { return Index; }
-            set { Index = value; }
+            get { return F_Number; }
+            set { F_Number = value; }
         }
 
+        public void NoItem()
+        {
+            Item_useless A = new Item_useless {Name_ = "Nothing" };
+            item = A;
+        }
     }
 }

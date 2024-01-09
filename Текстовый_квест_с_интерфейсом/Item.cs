@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace Текстовый_квест_с_интерфейсом
 {
-    public abstract class Item
+    [Serializable] public abstract class Item
     {/*
         string Name;
         string Discription;

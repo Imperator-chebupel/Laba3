@@ -57,13 +57,14 @@ namespace Текстовый_квест_с_интерфейсом
                     {
                         player.Pick_up(npc.item_);
                         Take_item_from(npc.item_, npc);
-                        return "\n\r" + "Я: " + player.Frases[npc.Index_, npc.Answer_ - 1] + NPC_Advice(x_p, y_p) + "\n\rМне что-то передали!";
+                        npc.NoItem();
+                        return "\n\r" + "Я: " + player.Frases[npc.F_Number_, npc.Answer_ - 1] + NPC_Advice(x_p, y_p) + "\n\rМне что-то передали!";
                     }
                     else
                         return "\n\rМы уже всё обсудили";
                 }
                 else if ((npc.X_ == x_p) && (npc.Y_ == y_p) && (code != npc.Answer_))
-                    return "\n\rЯ: " + player.Frases[npc.Index_, code - 1] + "\n\r" + npc.Name_ +": ......" + "\n\rМне следует подобрать другие слова";
+                    return "\n\rЯ: " + player.Frases[npc.F_Number_, code - 1] + "\n\r" + npc.Name_ +": ......" + "\n\rМне следует подобрать другие слова";
             }
             return "";
         }
@@ -74,7 +75,7 @@ namespace Текстовый_квест_с_интерфейсом
             {
                 if ((npc.X_ == x_p) && (npc.Y_ == y_p))
                 {
-                        return npc.Index_;
+                        return npc.F_Number_;
                 }
             }
             return -1;

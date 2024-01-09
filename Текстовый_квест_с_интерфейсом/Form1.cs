@@ -53,6 +53,8 @@ namespace Текстовый_квест_с_интерфейсом
             richTextBox1.Text += "\n\rМоя комната";
             richTextBox1_TextChanged();
             Hide_dialogs();
+            button10.Visible = true;
+            button16.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e) // Зал
@@ -66,6 +68,8 @@ namespace Текстовый_квест_с_интерфейсом
             Hide_dialogs();
             richTextBox1.Text += "\n\rЗал общежития";
             richTextBox1_TextChanged();
+            button10.Visible = true;
+            button16.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e) // Первый этаж общежития
@@ -79,6 +83,8 @@ namespace Текстовый_квест_с_интерфейсом
             Hide_dialogs();
             richTextBox1.Text += "\n\rПервый этаж общежития";
             richTextBox1_TextChanged();
+            button10.Visible = true;
+            button16.Visible = false;
         }
 
         private void button3_Click(object sender, EventArgs e) // магазин
@@ -92,6 +98,8 @@ namespace Текстовый_квест_с_интерфейсом
             Hide_dialogs();
             richTextBox1.Text += "\n\rМагазин 'Троечка'";
             richTextBox1_TextChanged();
+            button10.Visible = true;
+            button16.Visible = false;
         }
 
         private void button4_Click(object sender, EventArgs e) // гаражи
@@ -105,6 +113,8 @@ namespace Текстовый_квест_с_интерфейсом
             Hide_dialogs();
             richTextBox1.Text += "\n\rСтарые гаражи";
             richTextBox1_TextChanged();
+            button10.Visible = true;
+            button16.Visible = false;
         }
 
         private void button5_Click(object sender, EventArgs e) // скамейка 
@@ -118,6 +128,8 @@ namespace Текстовый_квест_с_интерфейсом
             Hide_dialogs();
             richTextBox1.Text += "\n\rСкамейка. Просто скамейка";
             richTextBox1_TextChanged();
+            button10.Visible = true;
+            button16.Visible = false;
         }
 
         private void button6_Click(object sender, EventArgs e) // холл корпуса
@@ -131,6 +143,8 @@ namespace Текстовый_квест_с_интерфейсом
             Hide_dialogs();
             richTextBox1.Text += "\n\rХолл учебного корпуса";
             richTextBox1_TextChanged();
+            button10.Visible = true;
+            button16.Visible = false;
         }
 
         private void button7_Click(object sender, EventArgs e) // столовая
@@ -144,6 +158,8 @@ namespace Текстовый_квест_с_интерфейсом
             Hide_dialogs();
             richTextBox1.Text += "\n\rМоя любимая столовка";
             richTextBox1_TextChanged();
+            button10.Visible = true;
+            button16.Visible = false;
         }
 
         private void button8_Click(object sender, EventArgs e) // кабинет
@@ -309,6 +325,7 @@ namespace Текстовый_квест_с_интерфейсом
         private void button18_Click(object sender, EventArgs e)
         {
             FW.Write_to_JSON_player(player);
+            FW.Write_to_JSON_world(Locations);
             richTextBox1.Text += "\n\rПрогресс сохранён";
             richTextBox1_TextChanged();
         }
@@ -319,6 +336,10 @@ namespace Текстовый_квест_с_интерфейсом
             player.Y_ = FW.Read_the_JSON_player().Y_;
             player.Time_ = FW.Read_the_JSON_player().Time_;
             player.Inventory = FW.Read_the_JSON_player().Inventory;
+
+            Locations.NPCs = FW.Read_from_Json_world().NPCs;
+            Locations.Items = FW.Read_from_Json_world().Items;
+
             richTextBox1.Text += "\n\rПрогресс загружен";
             textBox1.Text = "Времени осталось: " + player.Time_.ToString();
             richTextBox1_TextChanged();
